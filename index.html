@@ -1,0 +1,32 @@
+<html>
+
+Rate:<br/>
+<input type="text" id="dayrate" value="100" onkeyup="calc();">
+<br/>
+So far:<br/>
+<input type="text" id="output" value="100" disabled>
+
+<script>
+function calc() {
+    var d = new Date();
+    dayrate = document.getElementById("dayrate").value;
+
+    hours = d.getHours();
+    minutes = d.getMinutes();
+    completedMinutes = ((hours * 60) + minutes) - (9*60);
+
+    // working day 9-5:
+    dayMinutes = 8 * 60;
+
+    if (completedMinutes > dayMinutes) {
+      completedMinutes = dayMinutes;
+    }
+    sofar = completedMinutes/dayMinutes*dayrate;
+    console.log(sofar);
+    document.getElementById("output").value = sofar;
+}
+calc();
+</script>
+
+</html>
+
